@@ -1,2 +1,2 @@
-# opd-product-browser-web2
+# opd-product-browser-web
 Open Product Data - browser
