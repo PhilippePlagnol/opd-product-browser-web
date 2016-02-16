@@ -82,7 +82,7 @@ DATABASES = {
 #        'ENGINE': 'django.db.backends.sqlite3',
 #        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'opd3',
+        'NAME': 'opd2',
         'USER': 'root',
         'PASSWORD': 'root',
         'HOST': 'localhost',   # Or an IP Address that your DB is hosted on

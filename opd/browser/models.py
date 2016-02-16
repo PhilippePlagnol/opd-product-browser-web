@@ -124,6 +124,13 @@ class Gs1_gcp_rc(models.Model):
     RETURN_NAME = models.CharField(max_length=255)
     ORIGIN = models.CharField(max_length=255)
 
+# Search is used to store gtin that people are searching and the number of times it has been searched
 class Search(models.Model):
     GTIN_CD = models.CharField(max_length=13, primary_key=True)
     SEARCH_NB =  models.IntegerField(default=1)
+
+class Gs1_gpc_hier(models.Model):
+    GPC_S_CD = models.CharField(max_length=8)
+    GPC_F_CD = models.CharField(max_length=8)
+    GPC_C_CD = models.CharField(max_length=8)
+    GPC_B_CD = models.CharField(max_length=8, primary_key=True)
