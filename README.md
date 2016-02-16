@@ -6,7 +6,7 @@ Open Product Data is a project of [Open Knowledge Foundation Open Product Data] 
 
 [1]: <http://product.okfn.org> "OKFN Open Product Data website"
 
-# Installation
+# Installation
 
 ## Development environment
 
