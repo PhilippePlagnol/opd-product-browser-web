@@ -2,13 +2,26 @@ from django.shortcuts import get_object_or_404, render
 from django.http import HttpResponseRedirect
 from django.core.urlresolvers import reverse
 from django.views import generic
+from django.db.models import Q
 
 from .models import Gtin, Nutrition, Brand, Brand_owner, Search
 
-# Create your views here.
+# import for REST
+from rest_framework import viewsets
+from browser.serializers import GtinSerializer
 
+# REST API for smartphone apps
+# --------------------------------------------------------------------
 
+class GtinViewSet(viewsets.ReadOnlyModelViewSet):
+    """
+    API endpoint that allows users to be viewed or edited.
+    """
+    queryset = Gtin.objects.filter(Q(GTIN_CD='0836093401314') | Q(GTIN_CD='0857063002652'))
+    serializer_class = GtinSerializer
 
+# Website
+# --------------------------------------------------------------------
 def search(request):
 
     if Search.objects.filter(pk=request.POST['gtin']).exists():
@@ -49,13 +62,13 @@ class ViewGtin(generic.DetailView):
         # Return the object
         return object
 
-class BrandList(generic.ListView):
+class ViewBrandList(generic.ListView):
     template_name = 'browser/brand_list.html'
     context_object_name = 'page_brand_list'
     model = Brand
 
     def get_context_data(self, **kwargs):
-        context = super(BrandList, self).get_context_data(**kwargs)
+        context = super(ViewBrandList, self).get_context_data(**kwargs)
         context.update({
             'page_id': self.kwargs['page_id'],
         })
