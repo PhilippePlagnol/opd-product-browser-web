@@ -6,11 +6,11 @@ Open Product Data is a project of [Open Knowledge Foundation Open Product Data] 
 
 [1]: <http://product.okfn.org> "OKFN Open Product Data website"
 
-# 2 - INSTALLATION
+# Installation
 
-## 21 - DEVELOPMENT ENVIRONMENT
+## Development environment
 
-### 211 - PREREQUISITES
+### Prerequisites
 
 **Mandatory :**
 
@@ -29,11 +29,3 @@ Open Product Data is a project of [Open Knowledge Foundation Open Product Data] 
 * [VirtualEnvWrapper 3.7+] [8]
 
 [8]: <http://virtualenvwrapper.readthedocs.org/en/latest/install.html#basic-installation> "VirtualEnvWrapper install documentation"
-
-### 212 - CONFIGURATION
-
-### 213 - RUN
-
-## 21 - PRODUCTION ENVIRONMENT
-
-## 3 - CONTRIBUTE
