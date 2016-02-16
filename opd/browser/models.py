@@ -79,12 +79,18 @@ class Nutrition(models.Model):
     SOURCE = models.TextField(null=True, blank=True)
     SYNC_DT = models.DateField(null=True, blank=True)
 
-class GS1_gpc(models.Model):
+class Gs1_gpc(models.Model):
     GPC_LANG = models.CharField(max_length=3)
     GPC_CD = models.CharField(max_length=20, primary_key=True)
     GPC_NM = models.TextField()
     GPC_LEVEL = models.CharField(max_length=1)
     SOURCE = models.CharField(max_length=255)
+
+class Gs1_gpc_hier(models.Model):
+    GPC_S_CD = models.CharField(max_length=8)
+    GPC_F_CD = models.CharField(max_length=8)
+    GPC_C_CD = models.CharField(max_length=8)
+    GPC_B_CD = models.CharField(max_length=8, primary_key=True)
 
 class Brand_owner(models.Model):
     OWNER_CD = models.IntegerField(primary_key=True)
@@ -128,9 +134,3 @@ class Gs1_gcp_rc(models.Model):
 class Search(models.Model):
     GTIN_CD = models.CharField(max_length=13, primary_key=True)
     SEARCH_NB =  models.IntegerField(default=1)
-
-class Gs1_gpc_hier(models.Model):
-    GPC_S_CD = models.CharField(max_length=8)
-    GPC_F_CD = models.CharField(max_length=8)
-    GPC_C_CD = models.CharField(max_length=8)
-    GPC_B_CD = models.CharField(max_length=8, primary_key=True)
