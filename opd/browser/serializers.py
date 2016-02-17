@@ -3,7 +3,7 @@ from rest_framework import serializers
 from django.conf import settings
 
 
-class BrandSerializer(serializers.ModelSerializer):
+class BrandSerializer(serializers.HyperlinkedModelSerializer):
 
     code = serializers.SerializerMethodField()
     name = serializers.SerializerMethodField()
@@ -12,7 +12,7 @@ class BrandSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Brand
-        fields = ('code', 'name','BRAND_TYPE_CD','link','img')
+        fields = ('code', 'name','link','img')
 
     def get_code(self, obj):
         return obj.BSIN
@@ -31,7 +31,7 @@ class BrandSerializer(serializers.ModelSerializer):
             result = ""
         return result
 
-class GPC_S_Serializer(serializers.ModelSerializer):
+class GPC_S_Serializer(serializers.HyperlinkedModelSerializer):
     code = serializers.SerializerMethodField()
     name = serializers.SerializerMethodField()
     img = serializers.SerializerMethodField()
@@ -53,7 +53,7 @@ class GPC_S_Serializer(serializers.ModelSerializer):
             result = ""
         return result
 
-class GPC_F_Serializer(serializers.ModelSerializer):
+class GPC_F_Serializer(serializers.HyperlinkedModelSerializer):
     code = serializers.SerializerMethodField()
     name = serializers.SerializerMethodField()
 
@@ -67,7 +67,7 @@ class GPC_F_Serializer(serializers.ModelSerializer):
     def get_name(self, obj):
         return obj.GPC_NM
 
-class GPC_C_Serializer(serializers.ModelSerializer):
+class GPC_C_Serializer(serializers.HyperlinkedModelSerializer):
     code = serializers.SerializerMethodField()
     name = serializers.SerializerMethodField()
 
@@ -81,7 +81,7 @@ class GPC_C_Serializer(serializers.ModelSerializer):
     def get_name(self, obj):
         return obj.GPC_NM
 
-class GPC_B_Serializer(serializers.ModelSerializer):
+class GPC_B_Serializer(serializers.HyperlinkedModelSerializer):
     code = serializers.SerializerMethodField()
     name = serializers.SerializerMethodField()
 
@@ -95,7 +95,7 @@ class GPC_B_Serializer(serializers.ModelSerializer):
     def get_name(self, obj):
         return obj.GPC_NM
 
-class GCP_Serializer(serializers.ModelSerializer):
+class GCP_Serializer(serializers.HyperlinkedModelSerializer):
     code = serializers.SerializerMethodField()
     name = serializers.SerializerMethodField()
     address_1 = serializers.SerializerMethodField()
@@ -133,7 +133,7 @@ class GCP_Serializer(serializers.ModelSerializer):
     def get_country(self, obj):
         return obj.GLN_COUNTRY_ISO_CD
 
-class GtinSerializer(serializers.ModelSerializer):
+class GtinSerializer(serializers.HyperlinkedModelSerializer):
 
     code = serializers.SerializerMethodField()
     name = serializers.SerializerMethodField()

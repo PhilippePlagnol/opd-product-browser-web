@@ -7,25 +7,35 @@ from django.db.models import Q
 from .models import Gtin, Nutrition, Brand, Brand_owner, Search
 
 # import for REST
-from rest_framework import viewsets
+
 from browser.serializers import GtinSerializer
+from django.http import Http404
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from rest_framework import status
 
-# REST API for smartphone apps
+# REST API DRF
 # --------------------------------------------------------------------
 
-class GtinViewSet(viewsets.ReadOnlyModelViewSet):
-    """
-    API endpoint that allows users to be viewed or edited.
-    """
-    # TO DO !
-    #
-    # use code of URL
-    #
-    queryset = Gtin.objects.filter(Q(GTIN_CD='0836093401314') | Q(GTIN_CD='0857063002652'))
-    serializer_class = GtinSerializer
+# gtin for test : 0836093401314    0857063002652
 
-# Website
+class RestViewGtinDetail(APIView):
+    def get_object(self, pk):
+        try:
+            return Gtin.objects.get(pk=pk)
+        except Gtin.DoesNotExist:
+            raise Http404
+
+    def get(self, request, pk, format=None):
+        gtin = self.get_object(pk)
+        serializer = GtinSerializer(gtin)
+        return Response(serializer.data)
+
+
+# WEBSITE
 # --------------------------------------------------------------------
+
+
 def search(request):
 
     if Search.objects.filter(pk=request.POST['gtin']).exists():
