@@ -20,7 +20,7 @@ from rest_framework import routers
 from browser import views
 
 router = routers.DefaultRouter()
-router.register(r'rest', views.GtinViewSet)
+router.register(r'rest/product/(?P<code>[0-9]+)', views.GtinViewSet)
 
 urlpatterns = [
 	url(r'^browser/', include('browser.urls')),
