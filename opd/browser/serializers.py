@@ -95,6 +95,44 @@ class GPC_B_Serializer(serializers.ModelSerializer):
     def get_name(self, obj):
         return obj.GPC_NM
 
+class GCP_Serializer(serializers.ModelSerializer):
+    code = serializers.SerializerMethodField()
+    name = serializers.SerializerMethodField()
+    address_1 = serializers.SerializerMethodField()
+    address_2 = serializers.SerializerMethodField()
+    address_3 = serializers.SerializerMethodField()
+    cp = serializers.SerializerMethodField()
+    city = serializers.SerializerMethodField()
+    country = serializers.SerializerMethodField()
+
+    class Meta:
+        model = Gs1_gpc
+        fields = ('code', 'name','address_1','address_2','address_3','cp','city','country')
+
+    def get_code(self, obj):
+        return obj.GLN_CD
+
+    def get_name(self, obj):
+        return obj.GLN_NM
+
+    def get_address_1(self, obj):
+        return obj.GLN_ADDR_02
+
+    def get_address_2(self, obj):
+        return obj.GLN_ADDR_03
+
+    def get_address_3(self, obj):
+        return obj.GLN_ADDR_04
+
+    def get_cp(self, obj):
+        return obj.GLN_ADDR_POSTALCODE
+
+    def get_city(self, obj):
+        return obj.GLN_ADDR_CITY
+
+    def get_country(self, obj):
+        return obj.GLN_COUNTRY_ISO_CD
+
 class GtinSerializer(serializers.ModelSerializer):
 
     code = serializers.SerializerMethodField()
@@ -110,10 +148,11 @@ class GtinSerializer(serializers.ModelSerializer):
     GPC_F_CD = GPC_F_Serializer(many=False, read_only=True)
     GPC_C_CD = GPC_C_Serializer(many=False, read_only=True)
     GPC_B_CD = GPC_B_Serializer(many=False, read_only=True)
+    GCP_CD = GCP_Serializer(many=False, read_only=True)
 
     class Meta:
         model = Gtin
-        fields = ('code', 'name','product_line','BSIN','weight','volume','alcohol','img','GPC_S_CD', 'GPC_F_CD','GPC_C_CD','GPC_B_CD')
+        fields = ('code', 'name','product_line','BSIN','weight','volume','alcohol','img','GPC_S_CD', 'GPC_F_CD','GPC_C_CD','GPC_B_CD','GCP_CD')
 
     def get_name(self, obj):
         return obj.GTIN_NM

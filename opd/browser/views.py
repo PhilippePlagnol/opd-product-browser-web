@@ -17,6 +17,10 @@ class GtinViewSet(viewsets.ReadOnlyModelViewSet):
     """
     API endpoint that allows users to be viewed or edited.
     """
+    # TO DO !
+    #
+    # use code of URL
+    #
     queryset = Gtin.objects.filter(Q(GTIN_CD='0836093401314') | Q(GTIN_CD='0857063002652'))
     serializer_class = GtinSerializer
 
