@@ -1,7 +1,5 @@
 from django.db import models
 
-# Create your models here.
-
 # Gtin contains products with a GTIN-13
 class Gtin(models.Model):
     GTIN_CD = models.CharField(max_length=13, primary_key=True)
