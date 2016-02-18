@@ -34,6 +34,9 @@ class Brand(models.Model):
     BRAND_TYPE_CD = models.ForeignKey('Brand_type', null=True, blank=True)
     BRAND_LINK = models.CharField(max_length=255, null=True, blank=True)
     OWNER_CD = models.ForeignKey('Brand_owner', null=True, blank=True)
+    FLAG_DELETE = models.BooleanField(default=False)
+    LAST_MODIFIED = models.DateTimeField(auto_now=True)
+    COMMENTS = models.TextField(max_length=255, null=True, blank=True)
     def __str__(self):
         return self.BSIN
 

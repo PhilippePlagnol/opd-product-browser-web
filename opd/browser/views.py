@@ -2,7 +2,6 @@ from django.shortcuts import get_object_or_404, render
 from django.http import HttpResponseRedirect
 from django.core.urlresolvers import reverse
 from django.views import generic
-from django.db.models import Q
 
 from .models import Gtin, Nutrition, Brand, Brand_owner, Search
 
@@ -14,30 +13,11 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 
-# REST API DRF
+# --------------------------------------------------------------------
+#  WEBSITE BROWSER
 # --------------------------------------------------------------------
 
-# gtin for test : 0836093401314    0857063002652
-
-class RestViewGtinDetail(APIView):
-    def get_object(self, pk):
-        try:
-            return Gtin.objects.get(pk=pk)
-        except Gtin.DoesNotExist:
-            raise Http404
-
-    def get(self, request, pk, format=None):
-        gtin = self.get_object(pk)
-        serializer = GtinSerializer(gtin)
-        return Response(serializer.data)
-
-
-# WEBSITE
-# --------------------------------------------------------------------
-
-
-def search(request):
-
+def search_gtin(request):
     if Search.objects.filter(pk=request.POST['gtin']).exists():
         search_gtin = Search.objects.get(pk=request.POST['gtin'])
         search_gtin.SEARCH_NB += 1
@@ -148,3 +128,21 @@ class ViewOwner(generic.ListView):
         """Return the last five published questions."""
         owner = self.kwargs['owner']
         return Brand.objects.filter(OWNER_CD=owner).order_by('BRAND_NM')
+
+# --------------------------------------------------------------------
+#   REST API DRF
+# --------------------------------------------------------------------
+
+# gtin for test : 0836093401314    0857063002652
+
+class RestViewGtinDetail(APIView):
+    def get_object(self, pk):
+        try:
+            return Gtin.objects.get(pk=pk)
+        except Gtin.DoesNotExist:
+            raise Http404
+
+    def get(self, request, pk, format=None):
+        gtin = self.get_object(pk)
+        serializer = GtinSerializer(gtin)
+        return Response(serializer.data)
