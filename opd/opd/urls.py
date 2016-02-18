@@ -15,16 +15,15 @@ Including another URLconf
 """
 from django.conf.urls import include, url
 from django.contrib import admin
+from django.conf import settings
+from django.conf.urls.static import static
 
-from rest_framework import routers
 from browser import views
 
-router = routers.DefaultRouter()
-router.register(r'rest/product/(?P<code>[0-9]+)', views.GtinViewSet)
 
 urlpatterns = [
-	url(r'^browser/', include('browser.urls')),
+	url(r'^www/', include('browser.urls')),
     url(r'^admin/', admin.site.urls),
-    url(r'^', include(router.urls)),
+    url(r'^api/gtin/(?P<pk>[0-9]+)/$', views.RestViewGtinDetail.as_view()),
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework'))
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
