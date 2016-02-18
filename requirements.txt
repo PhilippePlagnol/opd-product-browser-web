@@ -1,4 +1,9 @@
+colorama==0.3.6
 Django==1.9.2
+django-angular==0.7.15
 djangorestframework==3.3.2
+httpie==0.9.3
 mysqlclient==1.3.7
+Pygments==2.1.1
+requests==2.9.1
 wheel==0.26.0
