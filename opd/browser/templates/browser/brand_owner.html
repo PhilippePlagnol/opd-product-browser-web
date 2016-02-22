@@ -23,10 +23,10 @@
                     onerror="this.src='{% static 'browser/img/coming-soon.jpg' %}';"  >
                 </td>
                 <td>
-					<b>Owner name</b> : {{owner_detail.OWNER_NM}}<br/><br/>
-                    <b>Website</b> : <a href="{{owner_detail.OWNER_LINK}}" target="_blank" rel="nofollow">{{owner_detail.OWNER_LINK}}</a><br/>
-                    <br/>
-                    <img src="{% static 'browser/img/35px-Wikipedia-logo.png' %}" /> <a href="{{owner_detail.OWNER_WIKI_EN}}" target="_blank" rel="nofollow">See the article on Wikipedia</a><br/>
+					<b>Owner name</b> : {{owner_detail.OWNER_NM}}<br><br>
+                    <b>Website</b> : <a href="{{owner_detail.OWNER_LINK}}" target="_blank" rel="nofollow">{{owner_detail.OWNER_LINK}}</a><br>
+                    <br>
+                    <img src="{% static 'browser/img/35px-Wikipedia-logo.png' %}" > <a href="{{owner_detail.OWNER_WIKI_EN}}" target="_blank" rel="nofollow">See the article on Wikipedia</a><br>
                 </td>
             </tr>
             </table>
@@ -46,15 +46,15 @@
                         src="{% url 'browser:show_brand_img' Brand.pk %}"
                         alt="{{Brand.BRAND_NM}}"
                         title="{{Brand.BRAND_NM}}"
-                        onerror="this.src='{% static 'browser/img/coming-soon.jpg' %}';"  />
+                        onerror="this.src='{% static 'browser/img/coming-soon.jpg' %}';"  >
                     </a>
               </td>
               <td>
                 <h2>{{Brand.BRAND_NM}}</h2>
 
-               <b>BSIN</b> :  {{Brand.BSIN}} <br />
-                {% if Brand.BRAND_NM %} <b>Brand name</b> : {{Brand.BRAND_NM}} <br/>{% endif %}
-                <br/><br/>
+               <b>BSIN</b> :  {{Brand.BSIN}} <br >
+                {% if Brand.BRAND_NM %} <b>Brand name</b> : {{Brand.BRAND_NM}} <br>{% endif %}
+                <br><br>
                 >> <a href="brand-{{Brand.BSIN}}" > Voir la liste des produits </a>
 
               </td>

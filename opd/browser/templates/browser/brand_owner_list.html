@@ -17,7 +17,7 @@
 					src="{% url 'browser:show_owner_img' Owner.OWNER_CD|stringformat:"06d" %}"
 					title="Owner - {{Owner.OWNER_NM}}"
 					alt="Owner - {{Owner.OWNER_NM}}"
-					onerror="this.src='{% static 'browser/img/coming-soon.jpg' %}';" />
+					onerror="this.src='{% static 'browser/img/coming-soon.jpg' %}';" >
 			</a>
 			<p>{{Owner.OWNER_NM}}</p>
   </div>
