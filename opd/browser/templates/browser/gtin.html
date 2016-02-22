@@ -13,9 +13,10 @@
 			<table border="0">
 				<tr>
 					<td>
+              <!-- src="{{MEDIA_URL}}gtin/gtin-{{gtin.GTIN_CD|slice:"0:3"}}/{{gtin.GTIN_CD}}.jpg"-->
 							<img itemprop="image"
 								class="thumbnail-list"
-								src="{{MEDIA_URL}}gtin/gtin-{{gtin.GTIN_CD|slice:"0:3"}}/{{gtin.GTIN_CD}}.jpg"
+                src="{% url 'browser:show_gtin_img' gtin.pk %}"
 								alt="{{gtin.BSIN.BRAND_NM}} - {% if gtin.PRODUCT_LINE %} {{gtin.PRODUCT_LINE}} - {% endif %}  {{gtin.PRODUCT_LINE}} {{gtin.GTIN_NM}} {{gtin.GTIN_CD}} UPC {{gtin.UPC_CD}}"
 								title="{{gtin.BSIN.BRAND_NM}} - {% if gtin.PRODUCT_LINE %} {{gtin.PRODUCT_LINE}} - {% endif %}  {{gtin.PRODUCT_LINE}} {{gtin.GTIN_NM}} {{gtin.GTIN_CD}} UPC {{gtin.UPC_CD}}"
 								onerror="this.src='/static/browser/img/coming-soon.jpg';">
@@ -71,9 +72,10 @@
 		<table>
 		<tr>
 			<td>
+        <!-- {{MEDIA_URL}}brand/{{gtin.BSIN}}.jpg -->
 				<img itemprop="image"
 					class="thumbnail-list"
-					src="{{MEDIA_URL}}brand/{{gtin.BSIN}}.jpg"
+          src="{% url 'browser:show_brand_img' gtin.BSIN %}"
 					alt="{{gtin.BSIN.BRAND_NM}} BSIN {{gtin.BSIN.BRAND_CD}}"
 					title="{{gtin.BSIN.BRAND_NM}} BSIN {{gtin.BSIN.BRAND_CD}}"
 					onerror="this.src='/static/browser/img/coming-soon.jpg';">

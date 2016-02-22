@@ -15,10 +15,12 @@
 
             <table border="0" cellspacing="0px" cellpadding="0px">
             <tr>
-                <td><img class="thumbnail-list"
-                        src="{{MEDIA_URL}}owner/{{owner_detail.OWNER_CD|stringformat:"06d"}}.jpg"
-                        title="{{owner_detail.OWNER_NM}}" alt="{{owner_detail.OWNER_NM}}"
-                        onerror="this.src='{% static 'browser/img/coming-soon.jpg' %}';"  />
+                <td>
+                  <!-- {{MEDIA_URL}}owner/{{owner_detail.OWNER_CD|stringformat:"06d"}}.jpg -->
+                  <img class="thumbnail-list"
+                    src="{% url 'browser:show_owner_img' owner_detail.OWNER_CD %}"
+                    title="{{owner_detail.OWNER_NM}}" alt="{{owner_detail.OWNER_NM}}"
+                    onerror="this.src='{% static 'browser/img/coming-soon.jpg' %}';"  >
                 </td>
                 <td>
 					<b>Owner name</b> : {{owner_detail.OWNER_NM}}<br/><br/>
@@ -38,10 +40,10 @@
   	    <table>
         <tr>
             <td>
-
                 	<a href="brand-{{Brand.BSIN}}" >
+                    <!-- {{MEDIA_URL}}brand/{{Brand.BSIN}}.jpg -->
                     <img class="thumbnail-list"
-                        src="{{MEDIA_URL}}brand/{{Brand.BSIN}}.jpg"
+                        src="{% url 'browser:show_brand_img' Brand.pk %}"
                         alt="{{Brand.BRAND_NM}}"
                         title="{{Brand.BRAND_NM}}"
                         onerror="this.src='{% static 'browser/img/coming-soon.jpg' %}';"  />

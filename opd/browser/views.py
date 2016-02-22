@@ -1,9 +1,10 @@
 from django.shortcuts import get_object_or_404, render
+from django.http import HttpResponse
 from django.http import HttpResponseRedirect
 from django.core.urlresolvers import reverse
 from django.views import generic
 
-from .models import Gtin, Nutrition, Brand, Brand_owner, Search
+from .models import Gtin, Nutrition, Brand, Brand_owner, Search, Gtin_img, Brand_img, Brand_owner_img
 
 # import for REST
 
@@ -16,6 +17,18 @@ from rest_framework import status
 # --------------------------------------------------------------------
 #  WEBSITE BROWSER
 # --------------------------------------------------------------------
+
+def Show_gtin_img(request,pk):
+    BinaryImg = Gtin_img.objects.get(pk=pk).GTIN_IMG,
+    return HttpResponse(BinaryImg, 'image/jpg')
+
+def Show_brand_img(request,pk):
+    BinaryImg = Brand_img.objects.get(pk=pk).BSIN_IMG,
+    return HttpResponse(BinaryImg, 'image/jpg')
+
+def Show_owner_img(request,pk):
+    BinaryImg = Brand_owner_img.objects.get(pk=pk).OWNER_IMG,
+    return HttpResponse(BinaryImg, 'image/jpg')
 
 def search_gtin(request):
     if Search.objects.filter(pk=request.POST['gtin']).exists():

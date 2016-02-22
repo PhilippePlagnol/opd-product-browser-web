@@ -57,8 +57,9 @@
 		<div class="col-xs-4 col-sm-3 col-md-2">
 
 			<a href="brand-{{ Brand.BSIN }}">
+				<!-- {{MEDIA_URL}}brand/{{Brand.BSIN}}.jpg -->
 				<img class="thumbnail-list"
-				src="{{MEDIA_URL}}brand/{{Brand.BSIN}}.jpg"
+				src="{% url 'browser:show_brand_img' Brand.BSIN %}"
 				title="Brand - {{ Brand.BRAND_NM }}"
 				alt="Brand - {{ Brand.BRAND_NM }}"
 				onerror="this.src='{% static 'browser/img/coming-soon.jpg' %}';" >
