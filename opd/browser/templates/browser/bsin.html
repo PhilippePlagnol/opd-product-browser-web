@@ -1,5 +1,6 @@
 {% extends "browser/base.html" %}
 {% load static %}
+{% load browser_extras %}
 {% block content %}
 
 
@@ -24,13 +25,13 @@
                 </td>
 
 				        <td>
-                    <b>BSIN</b> : {{bsin_detail.BSIN}}<br/>
-					          <b>Brand name</b> : {{bsin_detail.BRAND_NM}}<br/>
-                    <b>Brand type</b> : {{bsin_detail.BRAND_TYPE_CD.BRAND_TYPE_NM}}<br/><br/>
+                    <b>BSIN</b> : {{bsin_detail.BSIN}}<br>
+					          <b>Brand name</b> : {{bsin_detail.BRAND_NM}}<br>
+                    <b>Brand type</b> : {{bsin_detail.BRAND_TYPE_CD.BRAND_TYPE_NM}}<br><br>
                     {% if bsin_detail.OWNER_CD %}
-                    <b>Owner</b> : <a  href="owner-{{bsin_detail.OWNER_CD.OWNER_CD|stringformat:"06d"}}" >{{bsin_detail.OWNER_CD.OWNER_NM}}</a><br/><br/>
+                    <b>Owner</b> : <a  href="owner-{{bsin_detail.OWNER_CD.OWNER_CD|stringformat:"06d"}}" >{{bsin_detail.OWNER_CD.OWNER_NM}}</a><br><br>
                     {% endif %}
-                    <b>Website</b> : <a href="{{BRAND_LINK}}" target="_blank" rel="nofollow">{{bsin_detail.BRAND_LINK}}</a><br/>
+                    <b>Website</b> : <a href="{{BRAND_LINK}}" target="_blank" rel="nofollow">{{bsin_detail.BRAND_LINK}}</a><br>
                 </td>
             </tr>
           </table>
@@ -61,25 +62,24 @@
 
                         </td>
                         <td>
-
                                 <h2>{% if Gtin.PRODUCT_LINE %} <b>{{Gtin.PRODUCT_LINE}}</b> - {% endif %} {{Gtin.GTIN_NM}}</h2>
 
                                 <b>GTIN Code </b> : <span style="font-family:'Courier New', Courier, monospace;">
               								  <span itemprop="gtin13">{{Gtin.GTIN_CD}}</span>
               									{{Gtin.UPC_CD}}  <!-- / UPC -->
-              								  </span>  <br/>
+              								  </span>  <br>
 
-                                {% if Gtin.GCP_CD %} <b>GCP Code</b> &nbsp;: <span style="font-family:'Courier New', Courier, monospace;">
+                                {% if Gtin.GCP_CD %} <b>GCP Code</b> : <span style="font-family:'Courier New', Courier, monospace;">
                 								  {{Gtin.GCP_CD}}
                 								  </span>
-                								  <br/>
+                								  <br>
                                {% endif %}
 
-                                <br/>
+                                <br>
 
-                                <b>Commercial name</b> : <span itemprop="name">{% if Gtin.GTIN_NM %} {{Gtin.GTIN_NM}} {% else %} Name of {{Gtin.GTIN_CD}} coming soon {% endif %}</span><br/>
+                                <b>Commercial name</b> : <span itemprop="name">{% if Gtin.GTIN_NM %} {{Gtin.GTIN_NM}} {% else %} Name of {{Gtin.GTIN_CD}} coming soon {% endif %}</span><br>
 
-                                {% if Gtin.PRODUCT_LINE %} <b>Product line</b> : {{Gtin.PRODUCT_LINE}} <br/> {% endif %}
+                                {% if Gtin.PRODUCT_LINE %} <b>Product line</b> : {{Gtin.PRODUCT_LINE}} <br> {% endif %}
 
 
 
@@ -88,25 +88,25 @@
                                 {% endif %}
                                 {% if Gtin.M_G %}
                                     {% if Gtin.M_G  >= 1000 %}
-                                        {{Gtin.PKG_UNIT}} x {{Gtin.M_KG|floatformat:"-3"}} kg
+                                        {{Gtin.PKG_UNIT}} x {{Gtin.M_G|to_kg}} kg
                                     {% else %}
                                         {{Gtin.PKG_UNIT}} x {{Gtin.M_G|floatformat}} g
                                     {% endif %}
-                                    {% if Gtin.M_OZ %} / {% else %} <br/> {% endif %}
+                                    {% if Gtin.M_OZ %} / {% else %} <br> {% endif %}
                                 {% endif %}
-                                {% if Gtin.M_OZ %} {{Gtin.PKG_UNIT|floatformat}} x {{Gtin.M_OZ|floatformat}} oz<br/> {% endif %}
+                                {% if Gtin.M_OZ %} {{Gtin.PKG_UNIT|floatformat}} x {{Gtin.M_OZ|floatformat}} oz<br> {% endif %}
                                 {% if Gtin.M_ML or Gtin.M_FLOZ %} <b>Volume</b> {% endif %}
                                 {% if Gtin.M_ML %}
                                     {% if Gtin.M_ML >= 1000 %}
-                                        {{Gtin.PKG_UNIT}} x {{Gtin.M_L|floatformat:"-3"}} l
+                                        {{Gtin.PKG_UNIT}} x {{Gtin.M_ML|to_liter}} l
                                      {% else %}
                                         {{Gtin.PKG_UNIT}} x {{Gtin.M_ML|floatformat}} ml
                                     {% endif %}
-                                    {% if Gtin.M_FLOZ %}  / {% else %} <br/> {% endif %}
+                                    {% if Gtin.M_FLOZ %}  / {% else %} <br> {% endif %}
                                 {% endif %}
-                                {% if Gtin.M_FLOZ %} {{Gtin.PKG_UNIT|floatformat}} x {{Gtin.M_FLOZ|floatformat}} floz<br/> {% endif %}
-                                {% if Gtin.M_ABV %} <b>Alcohol</b> : {{Gtin.M_ABV|floatformat}} % vol.<br/> {% endif %}
-                                {% if Gtin.M_ABW %} <b>Alcohol</b> : {{Gtin.M_ABW|floatformat}} % vol.<br/> {% endif %}
+                                {% if Gtin.M_FLOZ %} {{Gtin.PKG_UNIT|floatformat}} x {{Gtin.M_FLOZ|floatformat}} floz<br> {% endif %}
+                                {% if Gtin.M_ABV %} <b>Alcohol</b> : {{Gtin.M_ABV|floatformat}} % vol.<br> {% endif %}
+                                {% if Gtin.M_ABW %} <b>Alcohol</b> : {{Gtin.M_ABW|floatformat}} % vol.<br> {% endif %}
 
 
                                 {% if Gtin.nutrition.SYNC_DT %}
@@ -116,10 +116,7 @@
                                     <button type="button" class="btn btn-xs btn-danger">Nutrition Facts available</button>
                                   </a>
 
-
                 								{% endif %}
-
-
                         </td>
                     </tr>
                 </table>

@@ -1,5 +1,6 @@
 {% extends "browser/base.html" %}
 {% load static %}
+{% load browser_extras %}
 {% block content %}
 
 <div class="container">
@@ -39,7 +40,7 @@
 						{% endif %}
 						{% if gtin.M_G %}
 			                {% if gtin.M_G >= 1000 %}
-			                    {{gtin.PKG_UNIT|floatformat}} x {{gtin.M_KG|floatformat:"-3"}} kg
+			                    {{gtin.PKG_UNIT|floatformat}} x {{gtin.M_G|to_kg}} kg
 			                {% else %}
 			                    {{gtin.PKG_UNIT|floatformat}} x {{gtin.M_G|floatformat}} g
 			                {% endif %}
@@ -52,7 +53,7 @@
 			            {% endif %}
 						{% if gtin.M_ML %}
 							{% if gtin.M_ML >= 1000 %}
-								{{gtin.PKG_UNIT|floatformat}} x {{gtin.M_L|floatformat:"-3"}} l
+								{{gtin.PKG_UNIT|floatformat}} x {{gtin.M_ML|to_liter}} l
 							{% else %}
 								{{gtin.PKG_UNIT|floatformat}} x {{gtin.M_ML|floatformat}} ml
 							{% endif %}

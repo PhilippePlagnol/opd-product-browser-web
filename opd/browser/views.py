@@ -56,17 +56,10 @@ class ViewGtin(generic.DetailView):
     queryset = Gtin.objects.all()
 
     def get_object(self):
-        # Call the superclass
         object = super(ViewGtin, self).get_object()
-        # Add new data
-        if object.M_G and object.M_G >= 1000:
-            object.M_KG = object.M_G / 1000
-        if object.M_ML and object.M_ML >= 1000:
-            object.M_L = object.M_ML / 1000
         if object.GTIN_CD and object.GTIN_CD[0:1] == "0":
             object.UPC_CD = object.GTIN_CD[1:12]
         object.save()
-        # Return the object
         return object
 
 class ViewBrandList(generic.ListView):
@@ -101,20 +94,6 @@ class ViewBsin(generic.ListView):
     def get_queryset(self):
         bsin = self.kwargs['bsin']
         return Gtin.objects.filter(BSIN=bsin).order_by('PRODUCT_LINE','PKG_UNIT','GTIN_NM')
-
-    def get_object(self):
-        # Call the superclass
-        object = super(ViewBsin, self).get_object()
-        # Add new data
-        if object.M_G and object.M_G >= 1000:
-            object.M_KG = object.M_G / 1000
-        if object.M_ML and object.M_ML >= 1000:
-            object.M_L = object.M_ML / 1000
-        if object.GTIN_CD and object.GTIN_CD[0:1] == "0":
-            object.UPC_CD = object.GTIN_CD[1:12]
-        object.save()
-        # Return the object
-        return object
 
 class ViewOwnerList(generic.ListView):
     template_name = 'browser/brand_owner_list.html'
