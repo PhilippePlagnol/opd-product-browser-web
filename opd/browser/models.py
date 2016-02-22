@@ -1,5 +1,18 @@
 from django.db import models
 
+
+class Gtin_img(models.Model):
+    GTIN_CD = models.CharField(max_length=13, primary_key=True)
+    GTIN_IMG = models.BinaryField()
+
+class Brand_img(models.Model):
+    BSIN = models.CharField(max_length=6, primary_key=True)
+    BSIN_IMG = models.BinaryField()
+
+class Brand_owner_img(models.Model):
+    OWNER_CD = models.IntegerField(primary_key=True)
+    OWNER_IMG = models.BinaryField()
+
 # Gtin contains products with a GTIN-13
 class Gtin(models.Model):
     GTIN_CD = models.CharField(max_length=13, primary_key=True)
@@ -32,9 +45,6 @@ class Brand(models.Model):
     BRAND_TYPE_CD = models.ForeignKey('Brand_type', null=True, blank=True)
     BRAND_LINK = models.CharField(max_length=255, null=True, blank=True)
     OWNER_CD = models.ForeignKey('Brand_owner', null=True, blank=True)
-    FLAG_DELETE = models.BooleanField(default=False)
-    LAST_MODIFIED = models.DateTimeField(auto_now=True)
-    COMMENTS = models.TextField(max_length=255, null=True, blank=True)
     def __str__(self):
         return self.BSIN
 

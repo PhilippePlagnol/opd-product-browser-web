@@ -14,8 +14,9 @@
             <table border="0" cellspacing="0px" cellpadding="0px">
             <tr>
                 <td>
-
+                  <!-- {{MEDIA_URL}}brand/{{bsin_detail.BSIN}}.jpg -->
       						<img class="thumbnail-list"
+                  src="{% url 'browser:show_brand_img' bsin_detail.pk %}"
                   src="{{MEDIA_URL}}brand/{{bsin_detail.BSIN}}.jpg"
                   title="{{bsin_detail.BRAND_NM}}"
                   alt="{{bsin_detail.BRAND_NM}}"
@@ -49,9 +50,10 @@
                     <tr>
                         <td>
                             <a  href="gtin-{{Gtin.GTIN_CD}}" >
+                              <!-- {{MEDIA_URL}}gtin/gtin-{{Gtin.GTIN_CD|slice:"0:3"}}/{{Gtin.GTIN_CD}}.jpg -->
               								<img itemprop="image"
               									class="thumbnail-list"
-              									src="{{MEDIA_URL}}gtin/gtin-{{Gtin.GTIN_CD|slice:"0:3"}}/{{Gtin.GTIN_CD}}.jpg"
+              									src="{% url 'browser:show_gtin_img' Gtin.pk %}"
               									alt="{{bsin_detail.BRAND_NM}} - {% if Gtin.PRODUCT_LINE %} {{Gtin.PRODUCT_LINE}} - {% endif %} {{Gtin.GTIN_NM}} {{Gtin.GTIN_CD}} {{Gtin.UPC_CD}}"
               									title="{{bsin_detail.BRAND_NM}} - {% if Gtin.PRODUCT_LINE %} {{Gtin.PRODUCT_LINE}} - {% endif %} {{Gtin.GTIN_NM}} {{Gtin.GTIN_CD}} {{Gtin.UPC_CD}}"
                                 onerror="this.src='/static/browser/img/coming-soon.jpg';">

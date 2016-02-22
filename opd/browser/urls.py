@@ -15,4 +15,8 @@ urlpatterns = [
     url(r'^gtin-(?P<pk>[0-9]+)$', views.ViewGtin.as_view(), name='gtin'),
     url(r'^owner-list$', views.ViewOwnerList.as_view(), name='owner_list'),
     url(r'^owner-(?P<owner>[a-zA-Z0-9]+)$', views.ViewOwner.as_view(), name='owner'),
+    # provide images stored in the database
+    url(r'^gtin-img-(?P<pk>[0-9]+)$', views.Show_gtin_img, name='show_gtin_img'),
+    url(r'^brand-img-(?P<pk>[a-zA-Z0-9]+)$', views.Show_brand_img, name='show_brand_img'),
+    url(r'^owner-img-(?P<pk>[a-zA-Z0-9]+)$', views.Show_owner_img, name='show_owner_img'),
 ]

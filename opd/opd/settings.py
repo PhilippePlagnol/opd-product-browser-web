@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_extensions',
     'rest_framework',
 ]
 
@@ -77,19 +78,30 @@ WSGI_APPLICATION = 'opd.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.9/ref/settings/#databases
 
+# Define the database manager to setup the various projects
+
+DATABASE_ROUTERS = ['browser.routers.OpdRouter']
+
 DATABASES = {
     'default': {
-#        'ENGINE': 'django.db.backends.sqlite3',
-#        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'opd2',
-        'USER': 'root',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'opd',
+        'USER': 'postgres',
         'PASSWORD': 'root',
         'HOST': 'localhost',   # Or an IP Address that your DB is hosted on
-        'PORT': '3306',
+        'PORT': '5432',
+    },
+    'images': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'images',
+        'USER': 'postgres',
+        'PASSWORD': 'root',
+        'HOST': 'localhost',   # Or an IP Address that your DB is hosted on
+        'PORT': '5432',
     }
 }
-
+#        'ENGINE': 'django.db.backends.sqlite3',
+#        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
 
 # Password validation
 # https://docs.djangoproject.com/en/1.9/ref/settings/#auth-password-validators
