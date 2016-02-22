@@ -25,15 +25,15 @@
 					<td>
 						<b>GTIN Code</b> : <span style="font-family:'Courier New', Courier, monospace;">{{gtin.GTIN_CD}}
 						{% if gtin.UPC_CD %} / UPC: {{gtin.UPC_CD}} {% endif %}</span>
-						<br/>
+						<br>
 						{% if gtin.GCP_CD %}
-							<b>GCP Code</b> &nbsp;: <span style="font-family:'Courier New', Courier, monospace;"> {{gtin.GCP_CD}} </span><br/>
+							<b>GCP Code</b> &nbsp;: <span style="font-family:'Courier New', Courier, monospace;"> {{gtin.GCP_CD}} </span><br>
 						{% endif %}
-						<br/>
-						{% if gtin.GTIN_NM  %}  <b>Commercial name</b> : {{gtin.GTIN_NM}} <br/> {% endif %}
-			            {% if gtin.PRODUCT_LINE  %}  <b>Product Line</b> : {{gtin.PRODUCT_LINE}} <br/> {% endif %}
-			            {% if gtin.REF_CD  %}  <b>Ref.</b> : {{gtin.REF_CD}} <br/> {% endif %}
-			            <br/>
+						<br>
+						{% if gtin.GTIN_NM  %}  <b>Commercial name</b> : {{gtin.GTIN_NM}} <br> {% endif %}
+			            {% if gtin.PRODUCT_LINE  %}  <b>Product Line</b> : {{gtin.PRODUCT_LINE}} <br> {% endif %}
+			            {% if gtin.REF_CD  %}  <b>Ref.</b> : {{gtin.REF_CD}} <br> {% endif %}
+			            <br>
 
 						{% if gtin.M_G or gtin.M_OZ  %}
 							<b>Weight</b> :
@@ -44,9 +44,9 @@
 			                {% else %}
 			                    {{gtin.PKG_UNIT|floatformat}} x {{gtin.M_G|floatformat}} g
 			                {% endif %}
-							{% if gtin.M_OZ %} / {% else %} <br/> {% endif %}
+							{% if gtin.M_OZ %} / {% else %} <br> {% endif %}
 			            {% endif %}
-			            {% if gtin.M_OZ %} {{gtin.PKG_UNIT|floatformat}} x {{gtin.M_OZ|floatformat}} oz<br/>{% endif %}
+			            {% if gtin.M_OZ %} {{gtin.PKG_UNIT|floatformat}} x {{gtin.M_OZ|floatformat}} oz<br>{% endif %}
 
 						{% if gtin.M_ML or gtin.M_FLOZ %}
 			                <b>Volume</b> :
@@ -57,12 +57,12 @@
 							{% else %}
 								{{gtin.PKG_UNIT|floatformat}} x {{gtin.M_ML|floatformat}} ml
 							{% endif %}
-							{% if gtin.M_FLOZ %} / {% else %} <br/> {% endif %}
+							{% if gtin.M_FLOZ %} / {% else %} <br> {% endif %}
 			            {% endif %}
-			            {% if gtin.M_FLOZ %} {{gtin.PKG_UNIT|floatformat}}x {{gtin.M_FLOZ|floatformat}} floz<br/>  {% endif %}
+			            {% if gtin.M_FLOZ %} {{gtin.PKG_UNIT|floatformat}}x {{gtin.M_FLOZ|floatformat}} floz<br>  {% endif %}
 
-						{% if gtin.M_ABV %} <b>Alcohol</b> : {{gtin.M_ABV|floatformat}} % vol.<br/> {% endif %}
-			            {% if gtin.M_ABW %} <b>Alcohol</b> : {{gtin.M_ABW|floatformat}} % vol.<br/> {% endif %}
+						{% if gtin.M_ABV %} <b>Alcohol</b> : {{gtin.M_ABV|floatformat}} % vol.<br> {% endif %}
+			            {% if gtin.M_ABW %} <b>Alcohol</b> : {{gtin.M_ABW|floatformat}} % vol.<br> {% endif %}
 					</td>
 				</tr>
 			</table>
@@ -84,12 +84,12 @@
 			</td>
 			<td>
 				<h2>Brand Data</h2>
-	            <B>BSIN</B> : {{gtin.BSIN}}<br/>
-				      {% if gtin.BSIN.BRAND_NM %}  <b>Brand name</b> : <a href="brand-{{gtin.BSIN}}" >{{gtin.BSIN.BRAND_NM}}</a> {% else %} The brand will be assigned soon... {% endif %}<br/>
+	            <B>BSIN</B> : {{gtin.BSIN}}<br>
+				      {% if gtin.BSIN.BRAND_NM %}  <b>Brand name</b> : <a href="brand-{{gtin.BSIN}}" >{{gtin.BSIN.BRAND_NM}}</a> {% else %} The brand will be assigned soon... {% endif %}<br>
 	            {% if gtin.BSIN.BRAND_TYPE_CD.BRAND_TYPE_NM %}  <b>Brand type</b> : {{gtin.BSIN.BRAND_TYPE_CD.BRAND_TYPE_NM}} {% else %} The brand type will be assigned soon... {% endif %}
-	            <br/><br/>
+	            <br><br>
 	            {% if gtin.OWNER_CD.OWNER_NM %}  <b>Owner</b> : <a href="product-owner-list-{{OWNER_CD|rjust:"10"}}.html" >{{gtin.OWNER_CD.OWNER_NM}}</a> {% endif %}
-	            <br/><br/>
+	            <br><br>
 	            {% if gtin.BSIN.BRAND_LINK %}  <b>Website</b> : <a href="{{gtin.BSIN.BRAND_LINK}}" target="_blank" rel="nofollow">{{gtin.BSIN.BRAND_LINK}}</a> {% endif %}
 			</td>
 		</tr>
@@ -105,10 +105,10 @@
   			<td>
   					{% if gtin.GPC_S_CD %}
   					<img class="thumbnail-list"
-  					     src="{% with 'browser/img/gpc/'|add:gtin.GPC_S_CD.GPC_CD|add:'.jpg' as image_static %}{% static image_static %}{% endwith %}"  />
+  					     src="{% with 'browser/img/gpc/'|add:gtin.GPC_S_CD.GPC_CD|add:'.jpg' as image_static %}{% static image_static %}{% endwith %}"  >
   					{% else %}
   					<img class="thumbnail-list"
-  					     src="{% static 'browser/img/coming-soon.jpg' %}"  />
+  					     src="{% static 'browser/img/coming-soon.jpg' %}"  >
   					{% endif %}
   			</td>
   			<td>
@@ -152,15 +152,15 @@
   				<tr>
   					<td>
   						<img class="thumbnail-list"
-  						src="{% static 'browser/img/nutrition.jpg' %}" />
+  						src="{% static 'browser/img/nutrition.jpg' %}" >
   					</td>
   					<td>
   						<h2>Nutrition Facts - U.S. Food and Drug Administration</h2>
   						<div class="label-nutrition">
-  	            <b>Manufacturer sourcing</b> : <a href = "{{gtin.nutrition.SOURCE}}" target="_blank" rel="nofollow">Access to the source of information</b></a><br/>
+  	            <b>Manufacturer sourcing</b> : <a href = "{{gtin.nutrition.SOURCE}}" target="_blank" rel="nofollow">Access to the source of information</b></a><br>
   	            <b>Synchronization date</b> : {{ gtin.nutrition.SYNC_DT }}
 
-                <hr/>
+                <hr>
 
                 <table id="label" width="100%" ><tr><td style="font-size:30px"><b>Nutrition Facts</b></td></tr></table>
                 <table id="label" width="100%"  ><tr><td style="font-size:12px">Serving Size {{gtin.nutrition.SERV_SIZE }}</td></tr></table>
@@ -184,7 +184,7 @@
                 <table id="label" width="100%" class="border-label-1"><tr ><td >Iron </td><td align="right">{{gtin.nutrition.IRON|floatformat }}%</td></tr></table>
                 <table id="label" width="100%"><tr><td style="font-size:11px">* Percent Daily Values (DV) are based on a 2,000 calorie diet. </td></tr></table>
 
-  	            <hr/>
+  	            <hr>
   							<b>INGREDIENTS</b> {{gtin.nutrition.INGREDIENTS}}
   			        </div>
   					</td>
@@ -201,35 +201,35 @@
   			<tr>
   				<td>
   					<img class="thumbnail-list"
-  					src="{% static 'browser/img/gln.jpg' %}" />
+  					src="{% static 'browser/img/gln.jpg' %}" >
   				</td>
   				<td>
 
   					<h2>Owner of the GCP</h2>
   					Source : <a href="http://gepir.gs1.org/v32/xx/about.aspx?Lang=en-US" target="_blank" rel="nofollow">GEPIR</a>
-  		            <br/><br/>
+  		            <br><br>
 
   					{% if gtin.GCP_CD.RETURN_CODE.RETURN_CODE == '0' %}
 
                 {% if gtin.GCP_CD.GLN_CD %}
                   <b>GCP Code</b> : <span style="font-family:'Courier New', Courier, monospace;">{{gtin.GCP_CD.GCP_CD}}</span>
-                  <br/><br/>
-                  <b>GLN Code</b> : <span style="font-family:'Courier New', Courier, monospace;">{{gtin.GCP_CD.GLN_CD}}</span><br/>
-                  <b>GLN Name</b> : {{gtin.GCP_CD.GLN_NM}}<br/><br/>
+                  <br><br>
+                  <b>GLN Code</b> : <span style="font-family:'Courier New', Courier, monospace;">{{gtin.GCP_CD.GLN_CD}}</span><br>
+                  <b>GLN Name</b> : {{gtin.GCP_CD.GLN_NM}}<br><br>
                   {{ gtin.GCP_CD.GLN_ADDR_02}}
                   {{ gtin.GCP_CD.GLN_ADDR_03}}
-                  {{ gtin.GCP_CD.GLN_ADDR_04}} <br/>
+                  {{ gtin.GCP_CD.GLN_ADDR_04}} <br>
                   {{ gtin.GCP_CD.GLN_ADDR_POSTALCODE}}
-                  {{ gtin.GCP_CD.GLN_ADDR_CITY}} <br/>
-                  <img align="center" src="{% with 'browser/img/country/'|add:gtin.GCP_CD.GLN_COUNTRY_ISO_CD|add:'.png' as image_static %}{% static image_static %}{% endwith %}" />
-                  {{gtin.GCP_CD.GLN_COUNTRY_ISO_CD}}<br/>
+                  {{ gtin.GCP_CD.GLN_ADDR_CITY}} <br>
+                  <img align="center" src="{% with 'browser/img/country/'|add:gtin.GCP_CD.GLN_COUNTRY_ISO_CD|add:'.png' as image_static %}{% static image_static %}{% endwith %}" >
+                  {{gtin.GCP_CD.GLN_COUNTRY_ISO_CD}}<br>
                 {% else %}
                   GLN data will be assigned soon...
                 {% endif %}
 
   					{% else %}
 
-    						GEPIR doesn't contain data for this GTIN<br/> -> Return Code {{gtin.GCP_CD.RETURN_CODE.RETURN_CODE }}
+    						GEPIR doesn't contain data for this GTIN<br> -> Return Code {{gtin.GCP_CD.RETURN_CODE.RETURN_CODE }}
     						( {{gtin.GCP_CD.RETURN_CODE.RETURN_NAME }} )
 
   					{% endif %}
