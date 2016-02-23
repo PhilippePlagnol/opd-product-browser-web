@@ -18,7 +18,7 @@
                 <td>
                   <!-- {{MEDIA_URL}}owner/{{owner_detail.OWNER_CD|stringformat:"06d"}}.jpg -->
                   <img class="thumbnail-list"
-                    src="{% url 'browser:show_owner_img' owner_detail.OWNER_CD %}"
+                    src="{% url 'browser:show_owner_img' owner_detail.OWNER_CD|stringformat:"06d" %}"
                     title="{{owner_detail.OWNER_NM}}" alt="{{owner_detail.OWNER_NM}}"
                     onerror="this.src='{% static 'browser/img/coming-soon.jpg' %}';"  >
                 </td>
