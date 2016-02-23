@@ -22,7 +22,7 @@ from browser import views
 
 
 urlpatterns = [
-	url(r'^www/', include('browser.urls')),
+	url(r'^', include('browser.urls')),
     url(r'^admin/', admin.site.urls),
     url(r'^api/gtin/(?P<pk>[0-9]+)/$', views.RestViewGtinDetail.as_view()),
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework'))
