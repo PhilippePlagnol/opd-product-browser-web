@@ -104,6 +104,7 @@ DATABASES = {
 
 # Update database configuration with $DATABASE_URL.
 # https://devcenter.heroku.com/articles/django-app-configuration
+
 import dj_database_url
 db_from_env = dj_database_url.config()
 DATABASES['default'].update(db_from_env)
@@ -157,6 +158,6 @@ STATICFILES_DIRS = (
 # https://warehouse.python.org/project/whitenoise/
 STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 
-#MEDIA_URL = 'http://product.okfn.org.s3.amazonaws.com/images/'
-MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, "media/")
+MEDIA_URL = 'http://product.okfn.org.s3.amazonaws.com/images/'
+#MEDIA_URL = '/media/'
+#MEDIA_ROOT = os.path.join(BASE_DIR, "media/")

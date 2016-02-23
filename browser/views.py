@@ -14,21 +14,35 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 
+import requests
+
 # --------------------------------------------------------------------
 #  WEBSITE BROWSER
 # --------------------------------------------------------------------
 
 def Show_gtin_img(request,pk):
-    BinaryImg = Gtin_img.objects.get(pk=pk).GTIN_IMG,
-    return HttpResponse(BinaryImg, 'image/jpg')
+    # 1. If images are stored in database
+    #BinaryImg = Gtin_img.objects.get(pk=pk).GTIN_IMG,
+    #return HttpResponse(BinaryImg, 'image/jpg')
+
+    # 2. If images are stored on amazon S3
+    return HttpResponse(requests.get('http://product.okfn.org.s3.amazonaws.com/images/gtin/gtin-' + pk[0:3] + '/' + pk + '.jpg' ), 'image/jpg')
 
 def Show_brand_img(request,pk):
-    BinaryImg = Brand_img.objects.get(pk=pk).BSIN_IMG,
-    return HttpResponse(BinaryImg, 'image/jpg')
+    # 1. If images are stored in database
+    #BinaryImg = Brand_img.objects.get(pk=pk).BSIN_IMG,
+    #return HttpResponse(BinaryImg, 'image/jpg')
+
+    # 2. If images are stored on amazon S3
+    return HttpResponse(requests.get('http://product.okfn.org.s3.amazonaws.com/images/brand/' + pk + '.jpg' ), 'image/jpg')
 
 def Show_owner_img(request,pk):
+    # 1. If images are stored in database
     BinaryImg = Brand_owner_img.objects.get(pk=pk).OWNER_IMG,
     return HttpResponse(BinaryImg, 'image/jpg')
+
+    # 2. If images are stored on amazon S3
+    return HttpResponse(requests.get('http://product.okfn.org.s3.amazonaws.com/images/owner/' + pk.zfill(6) + '.jpg' ), 'image/jpg')
 
 def search_gtin(request):
     if Search.objects.filter(pk=request.POST['gtin']).exists():
