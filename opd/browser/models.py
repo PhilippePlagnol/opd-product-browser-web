@@ -145,3 +145,8 @@ class Gs1_gcp_rc(models.Model):
 class Search(models.Model):
     GTIN_CD = models.CharField(max_length=13, primary_key=True)
     SEARCH_NB =  models.IntegerField(default=1)
+
+# same but for the API
+class Search_api(models.Model):
+    GTIN_CD = models.CharField(max_length=13, primary_key=True)
+    SEARCH_NB =  models.IntegerField(default=1)
