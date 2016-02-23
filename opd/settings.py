@@ -88,16 +88,16 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'opd',
         'USER': 'postgres',
-        'PASSWORD': 'root',
-        'HOST': 'localhost',   # Or an IP Address that your DB is hosted on
+        'PASSWORD': '',
+        'HOST': 'opd_postgres',   # Or an IP Address that your DB is hosted on
         'PORT': '5432',
     },
     'images': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'images',
         'USER': 'postgres',
-        'PASSWORD': 'root',
-        'HOST': 'localhost',   # Or an IP Address that your DB is hosted on
+        'PASSWORD': '',
+        'HOST': 'opd_postgres',   # Or an IP Address that your DB is hosted on
         'PORT': '5432',
     }
 }
